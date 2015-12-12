@@ -14,6 +14,7 @@ function! sprite#init(width, height)
   set foldcolumn=0
   set laststatus=0
   set lazyredraw
+  set linespace=0
   set scrolloff=0
   if has('kaoriya')
     set guioptions=C
