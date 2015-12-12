@@ -19,7 +19,7 @@ endfunction
 
 function! s:show()
   " TODO: better view
-  echo string(s:state)
+  "echo string(s:state)
 endfunction
 
 function! s:toggle(name)
@@ -30,6 +30,12 @@ function! s:on_clear()
   for k in keys(s:state)
     let s:state[k] = 0
   endfor
+  call s:show()
+  return ''
+endfunction
+
+function! s:on_quit()
+  let s:state['quit'] = 1
   call s:show()
   return ''
 endfunction
@@ -74,6 +80,7 @@ function! s:on_dash()
   return ''
 endfunction
 
+noremap <silent> <expr> <esc> <SID>on_quit()
 noremap <silent> <expr> <space> <SID>on_clear()
 noremap <silent> <expr> h <SID>on_left()
 noremap <silent> <expr> l <SID>on_right()
@@ -81,3 +88,6 @@ noremap <silent> <expr> j <SID>on_bottom()
 noremap <silent> <expr> k <SID>on_up()
 noremap <silent> <expr> f <SID>on_jump()
 noremap <silent> <expr> d <SID>on_dash()
+
+set guifont=MS_Gothic:h9
+winpos 1431 0

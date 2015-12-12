@@ -62,3 +62,10 @@ function! sprite#install_keymap()
     let i += 1
   endwhile
 endfunction
+
+function! sprite#update(x, y, p)
+  silent! execute printf("winpos %d %d", a:x, a:y)
+  call sprite#show(a:p)
+  redraw
+  return
+endfunction
